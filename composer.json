@@ -1,0 +1,32 @@
+{
+    "name": "anonimatrix/kompo-knowledge",
+    "description": "A package to implement knowledge inside your kompo application",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Anonimatrix\\Knowledge\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ezequiel Imaz",
+            "email": "tavelliezequiel@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^7.3|^8.0",
+        "laravel/framework": ">=5.6.0",
+        "kompo/kompo": "^3.0",
+        "anonimatrix/kompo-page-editor": "dev-dev"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Anonimatrix\\Knowledge\\Providers\\KnowledgeServiceProvider"
+            ]
+        }
+    },
+    "prefer-stable": true
+}
