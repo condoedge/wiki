@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Anonimatrix/page-editor.git",
-                "reference": "526da5046789a0592fb635ba915519d3dff446c3"
+                "reference": "69b116bbe34312fee7d7f0a0410236b186310ede"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Anonimatrix/page-editor/zipball/526da5046789a0592fb635ba915519d3dff446c3",
-                "reference": "526da5046789a0592fb635ba915519d3dff446c3",
+                "url": "https://api.github.com/repos/Anonimatrix/page-editor/zipball/69b116bbe34312fee7d7f0a0410236b186310ede",
+                "reference": "69b116bbe34312fee7d7f0a0410236b186310ede",
                 "shasum": ""
             },
             "require": {
@@ -58,7 +58,7 @@
                 "issues": "https://github.com/Anonimatrix/page-editor/issues",
                 "source": "https://github.com/Anonimatrix/page-editor/tree/dev"
             },
-            "time": "2023-12-14T23:57:37+00:00"
+            "time": "2023-12-15T16:25:50+00:00"
         },
         {
             "name": "brick/math",
