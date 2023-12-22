@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0acdb1f587957eca65a14b22305c3131",
+    "content-hash": "ae381010d34f4304ad1c7818f94cc3e5",
     "packages": [
         {
             "name": "anonimatrix/kompo-page-editor",
-            "version": "dev-dev",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Anonimatrix/page-editor.git",
-                "reference": "8cbdbf70741e0db0ef8298bc042e82c04768728e"
+                "reference": "327c65baff8f33ebd236527b93e5c71e0615d8a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Anonimatrix/page-editor/zipball/8cbdbf70741e0db0ef8298bc042e82c04768728e",
-                "reference": "8cbdbf70741e0db0ef8298bc042e82c04768728e",
+                "url": "https://api.github.com/repos/Anonimatrix/page-editor/zipball/327c65baff8f33ebd236527b93e5c71e0615d8a6",
+                "reference": "327c65baff8f33ebd236527b93e5c71e0615d8a6",
                 "shasum": ""
             },
             "require": {
@@ -25,6 +25,7 @@
                 "laravel/framework": ">=5.6.0",
                 "php": "^7.3|^8.0"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -58,7 +59,7 @@
                 "issues": "https://github.com/Anonimatrix/page-editor/issues",
                 "source": "https://github.com/Anonimatrix/page-editor/tree/dev"
             },
-            "time": "2023-12-19T18:24:37+00:00"
+            "time": "2023-12-22T16:06:33+00:00"
         },
         {
             "name": "brick/math",
