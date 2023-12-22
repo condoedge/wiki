@@ -68,7 +68,7 @@ class WhatsNewQuery extends Query
         $page = Page::findOrFail($pageId);
 
         return _Rows(
-            $page->pageItems()->first()?->getPageItemType()->toPreviewElement(),
+            $page->pageItems()->orderBy('order')->first()?->getPageItemType()->toPreviewElement(),
             _FlexEnd(
                 _Link('translate.knowledge.read-more')->class('mt-4')->selfGet('readFullArticle', ['id' => $page->id])->inPanel('preview_panel' . $page->id),
             ),
