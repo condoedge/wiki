@@ -4,11 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ae381010d34f4304ad1c7818f94cc3e5",
+    "content-hash": "3aa6cd74b947c01efa4c436b28e545c7",
     "packages": [
         {
             "name": "anonimatrix/kompo-page-editor",
-            "version": "dev-main",
+            "version": "v0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Anonimatrix/page-editor.git",
@@ -25,7 +25,6 @@
                 "laravel/framework": ">=5.6.0",
                 "php": "^7.3|^8.0"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -57,7 +56,7 @@
             "description": "A package to implement page editor inside your kompo application",
             "support": {
                 "issues": "https://github.com/Anonimatrix/page-editor/issues",
-                "source": "https://github.com/Anonimatrix/page-editor/tree/dev"
+                "source": "https://github.com/Anonimatrix/page-editor/tree/v0.5.0"
             },
             "time": "2023-12-22T16:06:33+00:00"
         },
@@ -5401,9 +5400,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "anonimatrix/kompo-page-editor": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
