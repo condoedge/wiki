@@ -1,5 +1,5 @@
 {
-    "name": "anonimatrix/kompo-knowledge",
+    "name": "condoedge/wiki",
     "description": "A package to implement knowledge inside your kompo application",
     "type": "library",
     "license": "MIT",
