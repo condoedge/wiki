@@ -3,7 +3,6 @@
 namespace Anonimatrix\Knowledge\Components\Forms;
 
 use Anonimatrix\PageEditor\Components\Cms\PageInfoForm;
-use Anonimatrix\PageEditor\Models\Tags\Tag;
 use Illuminate\Support\Facades\Route;
 
 class ArticleInfoForm extends PageInfoForm
@@ -29,31 +28,7 @@ class ArticleInfoForm extends PageInfoForm
             _Select('translate.knowledge.linked-route')->options(
                 collect(Route::getRoutes()->getRoutesByName())->mapWithKeys(fn($route, $name) => [$name => $name]),
             )->name('associated_route'),
-            _FlexBetween(
-                _MultiSelect('translate.knowledge.categories')->class('w-full')->options(
-                    Tag::forPage()->categories()->pluck('name','id'),
-                )->name('categories_ids', false)
-                    ->default($this->model->tags()->categories()->pluck('tags.id'))
-                    ->selfGet('getSubcategoriesSubSelect')->inPanel('subcategories_select'),
-                _Button()->icon('plus')->class('ml-4')->selfGet('getCategoriesFormModal')->inModal(),
-            ),
-            _Panel(
-                $this->getSubcategoriesSubSelect(),
-            )->id('subcategories_select')
+            new ArticleCategoriesForm($this->model->id),
         );
-    }
-
-    public function getCategoriesFormModal()
-    {
-        return new ArticleCategoriesForm();
-    }
-
-    public function getSubcategoriesSubSelect()
-    {
-        return _MultiSelect('translate.knowledge.subcategories')
-            ->options(
-                Tag::forPage()->subcategories(request('categories_ids'))->pluck('name','id'),
-            )->name('subcategories_ids', false)
-            ->default($this->model->tags()->subcategories()->pluck('tags.id'));
     }
 }

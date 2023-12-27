@@ -2,54 +2,51 @@
 
 namespace Anonimatrix\Knowledge\Components\Forms;
 
+use Anonimatrix\Knowledge\Components\ArticlesTagsQuery;
+use Anonimatrix\PageEditor\Models\Page;
 use Anonimatrix\PageEditor\Models\Tags\Tag;
-use Kompo\Modal;
+use Kompo\Form;
 
-class ArticleCategoriesForm extends Modal
+class ArticleCategoriesForm extends Form
 {
-    public $model = Tag::class;
+    public const ID = 'article_categories_form';
+    public $id = self::ID;
+    public $model = Page::class;
 
-    public $_Title = 'translate.knowledge.categories';
-
-    public function beforeSave()
-    {
-        $this->model->tag_id = request('tag_id');
-    }
-
-    public function body()
+    public function render()
     {
         return _Rows(
-            _Hidden()->name('tag_type')->value(Tag::TAG_TYPE_PAGE),
-            _Input('translate.knowledge.category-name')->name('name'),
-            _ButtonGroup('translate.knowledge.tag-type')
-                ->optionClass('px-4 py-2 text-center cursor-pointer')
-                ->selectedClass('bg-level3 text-white font-medium', 'bg-gray-200 text-level3 font-medium')
-                ->class('mb-2')->options([
-                    'categorie' => 'translate.knowledge.categorie',
-                    'subcategorie' => 'translate.knowledge.subcategorie',
-                ])->name('type', false)->default('categorie')->selfGet('getTypeInputs')->inPanel('type_inputs'),
-            _Panel()->id('type_inputs'),
-            _FlexEnd(
-                _SubmitButton('translate.knowledge.save')->closeModal(),
-            )->class('mt-4'),
+            _FlexBetween(
+                _MultiSelect('translate.knowledge.categories')->class('w-full')->options(
+                    Tag::forPage()->categories()->pluck('name','id'),
+                )->name('categories_ids', false)
+                    ->default($this->model->tags()->categories()->pluck('tags.id'))
+                    ->selfGet('getSubcategoriesSubSelect')->inPanel('subcategories_select'),
+                _Button()->icon('view-list')->class('ml-4')->selfGet('getTagsList')->inModal(),
+                _Button()->icon('plus')->class('ml-4')->selfGet('getTagsFormModal')->inModal(),
+            ),
+            _Panel(
+                $this->getSubcategoriesSubSelect(),
+            )->id('subcategories_select')
         );
     }
 
-    public function getTypeInputs()
+    public function getTagsList()
     {
-        if(request('type') == 'categorie') return null;
-
-        return _Select('translate.knowledge.category-parent')->options(
-            Tag::forPage()->categories()->pluck('name','id'),
-        )->name('tag_id')->class('mt-2');
+        return new ArticlesTagsQuery();
     }
 
-    public function rules()
+    public function getTagsFormModal()
     {
-        return [
-            'name' => 'required',
-            'tag_type' => 'required',
-            'tag_id' => 'required_if:type,subcategorie',
-        ];
+        return new ArticlesTagsForm();
+    }
+
+    public function getSubcategoriesSubSelect()
+    {
+        return _MultiSelect('translate.knowledge.subcategories')
+            ->options(
+                Tag::forPage()->subcategories(request('categories_ids'))->pluck('name','id'),
+            )->name('subcategories_ids', false)
+            ->default($this->model->tags()->subcategories()->pluck('tags.id'));
     }
 }
