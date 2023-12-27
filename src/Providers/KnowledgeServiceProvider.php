@@ -9,6 +9,7 @@ class KnowledgeServiceProvider extends ServiceProvider
 {
     public function boot()
     {
+        $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'knowledge');
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'knowledge');
 
         $this->publishes([
