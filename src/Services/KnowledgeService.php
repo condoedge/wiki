@@ -2,6 +2,7 @@
 
 namespace Anonimatrix\Knowledge\Services;
 
+use Anonimatrix\PageEditor\Support\Facades\Models\PageModel;
 use Illuminate\Support\Facades\Route;
 
 class KnowledgeService
@@ -31,5 +32,12 @@ class KnowledgeService
     {
         Route::get('knowledge-articles/whats-new', \Anonimatrix\Knowledge\Components\ArticlePage::class)->name('knowledge.whats-new');
         Route::get('knowledge-articles/{id?}', \Anonimatrix\Knowledge\Components\ArticlePage::class)->name('knowledge.articles');
+    }
+
+    public static function getCurrentRouteArticle()
+    {
+        $route = request()->route()->getName();
+
+        return PageModel::where('associated_route', $route)->where('group_type', 'knowledge')->first();
     }
 }
