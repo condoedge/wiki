@@ -38,14 +38,14 @@ class ArticlePage extends Form
 
         return _Rows(
             _Rows(
-                _Html('translate.knowledge.search-subtitle')->class('text-3xl text-center mb-6'),
-                _Input()->icon('search')->name('search', false)->placeholder('translate.knowledge.search-placeholder')->class('border border-gray-300 rounded-lg whiteField')
+                _Html('knowledge.search-subtitle')->class('text-3xl text-center mb-6'),
+                _Input()->icon('search')->name('search', false)->placeholder('knowledge.search-placeholder')->class('border border-gray-300 rounded-lg whiteField')
                     ->selfPost('getArticlesContent')->withAllFormValues()->inPanel('articles_panel'),
                 _MultiSelect()->icon('tag')
                     ->options(
                         Tag::forPage()->pluck('name','id'),
                     )
-                    ->name('tags_ids', false)->placeholder('translate.knowledge.tags-placeholder')
+                    ->name('tags_ids', false)->placeholder('knowledge.tags-placeholder')
                     ->default(request('tags_ids'))
                     ->class('border border-gray-300 rounded-lg whiteField')
                     ->selfPost('getArticlesContent')->withAllFormValues()->inPanel('articles_panel'),
@@ -67,7 +67,7 @@ class ArticlePage extends Form
     {
         return _Rows(
             _Svg($icon)->class('w-20 h-20 mx-auto text-gray-700'),
-            _Html('translate.knowledge.general-help')->class('text-xl text-center'),
+            _Html('knowledge.general-help')->class('text-xl text-center'),
         )->class('bg-white rounded-lg px-8 border border-gray-200 z-10 py-4 hover:bg-gray-100 transition-all duration-200');
     }
 
@@ -76,10 +76,10 @@ class ArticlePage extends Form
         return _Rows(
             !auth()->user()?->isAdmin() ? null : 
                 _Rows(
-                    _Link('translate.knowledge.edit-article')->href('knowledge.editor', ['id' => $this->model->id]),
+                    _Link('knowledge.edit-article')->href('knowledge.editor', ['id' => $this->model->id]),
                 )->class('mb-4 items-center'),
             _Rows(
-                _Link('translate.knowledge.back-to-all-articles')->icon('arrow-left')->href('knowledge.articles')->class('max-w-max'),
+                _Link('knowledge.back-to-all-articles')->icon('arrow-left')->href('knowledge.articles')->class('max-w-max'),
             )->class('px-8 mb-4'),
             PageEditor::getPagePreviewComponent([
                 'page_id' => $this->model->id,

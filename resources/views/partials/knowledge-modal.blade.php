@@ -86,9 +86,9 @@
     <div class="knowledge-modal">
         <div class="knowledge-modal__container">
             <div class="knowledge-modal__card">
-                <h5 class="knowledge-modal__title">{{__('translate.knowledge.help-title')}}</h5>
-                <p class="knowledge-modal__message">{{__('translate.knowledge.help-message')}}</p>
-                <a target="_blank" class="knowledge-modal__link" href="{{ route('knowledge.articles', ['id' => $page->id]) }}">{{__('translate.knowledge.go-to-help-page')}}</a>
+                <h5 class="knowledge-modal__title">{{__('knowledge.help-title')}}</h5>
+                <p class="knowledge-modal__message">{{__('knowledge.help-message')}}</p>
+                <a target="_blank" class="knowledge-modal__link" href="{{ route('knowledge.articles', ['id' => $page->id]) }}">{{__('knowledge.go-to-help-page')}}</a>
                 <button id="close" class="knowledge-modal__close-button" onclick="closeKnowledgeModal()">X</button>
             </div>
         </div>

@@ -23,9 +23,9 @@ class ArticleInfoForm extends PageInfoForm
     public function extraInputs()
     {
         return _Rows(
-            _Input('translate.knowledge.page-exterior-color')->type('color')->value($this->model->getExteriorBackgroundColor())->name('exterior_background_color'),
-            _Input('translate.knowledge.subtitule')->name('subtitle'),
-            _Select('translate.knowledge.linked-route')->options(
+            _Input('knowledge.page-exterior-color')->type('color')->value($this->model->getExteriorBackgroundColor())->name('exterior_background_color'),
+            _Input('knowledge.subtitule')->name('subtitle'),
+            _Select('knowledge.linked-route')->options(
                 collect(Route::getRoutes()->getRoutesByName())->mapWithKeys(fn($route, $name) => [$name => $name]),
             )->name('associated_route'),
             new ArticleCategoriesForm($this->model->id),

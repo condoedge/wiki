@@ -9,7 +9,7 @@ class ArticlesTagsForm extends Modal
 {
     public $model = Tag::class;
 
-    public $_Title = 'translate.knowledge.tags';
+    public $_Title = 'knowledge.tags';
 
     public function beforeSave()
     {
@@ -20,17 +20,17 @@ class ArticlesTagsForm extends Modal
     {
         return _Rows(
             _Hidden()->name('tag_type')->value(Tag::TAG_TYPE_PAGE),
-            _Input('translate.knowledge.category-name')->name('name'),
-            _ButtonGroup('translate.knowledge.tag-type')
+            _Input('knowledge.category-name')->name('name'),
+            _ButtonGroup('knowledge.tag-type')
                 ->optionClass('px-4 py-2 text-center cursor-pointer')
                 ->selectedClass('bg-level3 text-white font-medium', 'bg-gray-200 text-level3 font-medium')
                 ->class('mb-2')->options([
-                    'categorie' => 'translate.knowledge.categorie',
-                    'subcategorie' => 'translate.knowledge.subcategorie',
+                    'categorie' => 'knowledge.categorie',
+                    'subcategorie' => 'knowledge.subcategorie',
                 ])->name('type', false)->default('categorie')->selfGet('getTypeInputs')->inPanel('type_inputs'),
             _Panel()->id('type_inputs'),
             _FlexEnd(
-                _SubmitButton('translate.knowledge.save')->closeModal()->refresh(ArticleCategoriesForm::ID),
+                _SubmitButton('knowledge.save')->closeModal()->refresh(ArticleCategoriesForm::ID),
             )->class('mt-4'),
         );
     }
@@ -39,7 +39,7 @@ class ArticlesTagsForm extends Modal
     {
         if(request('type') == 'categorie') return null;
 
-        return _Select('translate.knowledge.category-parent')->options(
+        return _Select('knowledge.category-parent')->options(
             Tag::forPage()->categories()->pluck('name','id'),
         )->name('tag_id')->class('mt-2');
     }

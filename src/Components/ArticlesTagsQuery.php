@@ -18,7 +18,7 @@ class ArticlesTagsQuery extends Grid
     public function top()
     {
         return _Rows(
-            _Html('translate.knowledge.tags')->class('font-semibold text-xl mb-4'),
+            _Html('knowledge.tags')->class('font-semibold text-xl mb-4'),
         );
     }
 

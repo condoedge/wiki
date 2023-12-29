@@ -23,7 +23,7 @@ class ArticleSearchQuery extends Query
     public function top()
     {
         return _Rows(
-            _Html('translate.knowledge.search-results-subtitle')->class('text-3xl text-center mb-6'),
+            _Html('knowledge.search-results-subtitle')->class('text-3xl text-center mb-6'),
         );
     }
 
