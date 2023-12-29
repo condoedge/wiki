@@ -17,7 +17,7 @@ class ArticleCategoriesForm extends Form
     {
         return _Rows(
             _FlexBetween(
-                _MultiSelect('knowledge.categories')->class('w-full')->options(
+                _MultiSelect('wiki.categories')->class('w-full')->options(
                     Tag::forPage()->categories()->pluck('name','id'),
                 )->name('categories_ids', false)
                     ->default($this->model->tags()->categories()->pluck('tags.id'))
@@ -43,7 +43,7 @@ class ArticleCategoriesForm extends Form
 
     public function getSubcategoriesSubSelect()
     {
-        return _MultiSelect('knowledge.subcategories')
+        return _MultiSelect('wiki.subcategories')
             ->options(
                 Tag::forPage()->subcategories(request('categories_ids'))->pluck('name','id'),
             )->name('subcategories_ids', false)

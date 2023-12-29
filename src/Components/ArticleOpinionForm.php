@@ -19,11 +19,11 @@ class ArticleOpinionForm extends Form
         $userDislike = $userActualOpinion && $userActualOpinion->type === KnowledgeOpinion::OPINION_DISLIKE;
 
         return _FlexBetween(
-            _Html('knowledge.like-question')->class('text-xl'),
+            _Html('wiki.like-question')->class('text-lg'),
             _FlexBetween(
-                _Link()->icon('thumb-up')->class('text-gray-300 text-6xl hover:text-green-600 ' . ($userLike ? 'text-green-600' : ''))
+                _Link()->icon('thumb-up')->class('text-gray-300 text-4xl hover:text-green-600 ' . ($userLike ? 'text-green-600' : ''))
                     ->selfPost('likeArticle')->refresh(),
-                _Link()->icon('thumb-down')->class('text-gray-300 text-6xl hover:text-red-600 ' . ($userDislike ? 'text-red-600' : ''))
+                _Link()->icon('thumb-down')->class('text-gray-300 text-4xl hover:text-red-600 ' . ($userDislike ? 'text-red-600' : ''))
                     ->selfPost('dislikeArticle')->refresh(),
             )->class('ml-4 gap-3'),
         )->class('bg-gray-100 rounded-lg px-8 py-4 mt-12 max-w-max gap-3 mx-auto');

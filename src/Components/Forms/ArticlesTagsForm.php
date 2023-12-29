@@ -9,7 +9,7 @@ class ArticlesTagsForm extends Modal
 {
     public $model = Tag::class;
 
-    public $_Title = 'knowledge.tags';
+    public $_Title = 'wiki.tags';
 
     public function beforeSave()
     {
@@ -20,17 +20,17 @@ class ArticlesTagsForm extends Modal
     {
         return _Rows(
             _Hidden()->name('tag_type')->value(Tag::TAG_TYPE_PAGE),
-            _Input('knowledge.category-name')->name('name'),
-            _ButtonGroup('knowledge.tag-type')
+            _Input('wiki.category-name')->name('name'),
+            _ButtonGroup('wiki.tag-type')
                 ->optionClass('px-4 py-2 text-center cursor-pointer')
                 ->selectedClass('bg-level3 text-white font-medium', 'bg-gray-200 text-level3 font-medium')
                 ->class('mb-2')->options([
-                    'categorie' => 'knowledge.categorie',
-                    'subcategorie' => 'knowledge.subcategorie',
+                    'categorie' => 'wiki.category',
+                    'subcategorie' => 'wiki.subcategory',
                 ])->name('type', false)->default('categorie')->selfGet('getTypeInputs')->inPanel('type_inputs'),
             _Panel()->id('type_inputs'),
             _FlexEnd(
-                _SubmitButton('knowledge.save')->closeModal()->refresh(ArticleCategoriesForm::ID),
+                _SubmitButton('wiki.save')->closeModal()->refresh(ArticleCategoriesForm::ID),
             )->class('mt-4'),
         );
     }
@@ -39,7 +39,7 @@ class ArticlesTagsForm extends Modal
     {
         if(request('type') == 'categorie') return null;
 
-        return _Select('knowledge.category-parent')->options(
+        return _Select('wiki.category-parent')->options(
             Tag::forPage()->categories()->pluck('name','id'),
         )->name('tag_id')->class('mt-2');
     }

@@ -38,36 +38,36 @@ class ArticlePage extends Form
 
         return _Rows(
             _Rows(
-                _Html('knowledge.search-subtitle')->class('text-3xl text-center mb-6'),
-                _Input()->icon('search')->name('search', false)->placeholder('knowledge.search-placeholder')->class('border border-gray-300 rounded-lg whiteField')
+                _Html('wiki.search-subtitle')->class('text-3xl text-center mb-6'),
+                _Input()->icon('search')->name('search', false)->placeholder('wiki.search-placeholder')->class('border border-gray-300 rounded-lg whiteField')
                     ->selfPost('getArticlesContent')->withAllFormValues()->inPanel('articles_panel'),
                 _MultiSelect()->icon('tag')
                     ->options(
                         Tag::forPage()->pluck('name','id'),
                     )
-                    ->name('tags_ids', false)->placeholder('knowledge.tags-placeholder')
+                    ->name('tags_ids', false)->placeholder('wiki.tags-placeholder')
                     ->default(request('tags_ids'))
                     ->class('border border-gray-300 rounded-lg whiteField')
                     ->selfPost('getArticlesContent')->withAllFormValues()->inPanel('articles_panel'),
             )->class('max-w-4xl w-full mb-4'),
             _Rows(
                 _Columns(
-                    $this->mainLink('book-open')->href('knowledge.articles'),
-                    $this->mainLink('question-mark-circle')->href('knowledge.faq'),
+                    $this->mainLink('book-open','wiki.general-help')->href('knowledge.articles'),
+                    $this->mainLink('question-mark-circle','wiki.contextual-help')->href('knowledge.faq'),
                     _Rows(
                         (!auth()->user() || !$newsCount) ? null : _Html($newsCount)->class('absolute top-12 right-10 bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center z-20 text-xl font-semibold'),
-                        $this->mainLink('light-bulb')->href('knowledge.whats-new'),
+                        $this->mainLink('light-bulb','wiki.new-features')->href('knowledge.whats-new'),
                     )->class('relative'),
                 )->class('absolute max-w-4xl w-full px-8 z-10 left-1/2 transform -translate-x-1/2'),
             )->class('relative h-12 w-full hidden md:flex'),
         )->class('bg-slate-200 p-8 items-center border-b border-gray-300');
     }
 
-    protected function mainLink($icon)
+    protected function mainLink($icon,$title)
     {
         return _Rows(
             _Svg($icon)->class('w-20 h-20 mx-auto text-gray-700'),
-            _Html('knowledge.general-help')->class('text-xl text-center'),
+            _Html($title)->class('text-xl text-center'),
         )->class('bg-white rounded-lg px-8 border border-gray-200 z-10 py-4 hover:bg-gray-100 transition-all duration-200');
     }
 
@@ -76,10 +76,10 @@ class ArticlePage extends Form
         return _Rows(
             !auth()->user()?->isAdmin() ? null : 
                 _Rows(
-                    _Link('knowledge.edit-article')->href('knowledge.editor', ['id' => $this->model->id]),
+                    _Link('wiki.edit-article')->href('knowledge.editor', ['id' => $this->model->id]),
                 )->class('mb-4 items-center'),
             _Rows(
-                _Link('knowledge.back-to-all-articles')->icon('arrow-left')->href('knowledge.articles')->class('max-w-max'),
+                _Link('wiki.back-to-all-articles')->icon('arrow-left')->href('knowledge.articles')->class('max-w-max'),
             )->class('px-8 mb-4'),
             PageEditor::getPagePreviewComponent([
                 'page_id' => $this->model->id,

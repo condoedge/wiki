@@ -23,8 +23,8 @@ class ArticleRawList extends Table
 	{
 		return _Rows(
 			_Flexbetween(
-				_H1('knowledge.articles')->medTitle()->class('text-level3'),
-				_Link('knowledge.create-article')->button()->icon('icon-plus')->href('knowledge.editor'),
+				_H1('wiki.articles')->medTitle()->class('text-level3'),
+				_Link('wiki.create-article')->button()->icon('icon-plus')->href('knowledge.editor'),
 			),
             _FlexEnd(
                 _Input()->placeholder('knowledge.search')->name('title')->class('mb-0 whiteField w-full')->filter()
@@ -36,8 +36,8 @@ class ArticleRawList extends Table
     {
         return [
             _Th('#')->class('pl-14'),
-            _Th('knowledge.title')->class('pl-4'),
-            _Th('knowledge.actions')->class('pr-2 w-20'),
+            _Th('wiki.title')->class('pl-4'),
+            _Th('wiki.actions')->class('pr-2 w-20'),
         ];
     }
 
