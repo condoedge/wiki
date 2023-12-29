@@ -38,6 +38,6 @@ class KnowledgeService
     {
         $route = request()->route()->getName();
 
-        return PageModel::where('associated_route', $route)->where('group_type', 'knowledge')->first();
+        return PageModel::where('associated_route', $route)->where('associated_route', '!=', 'knowledge.whats-new')->where('group_type', 'knowledge')->first();
     }
 }
