@@ -24,7 +24,7 @@ class ArticleInfoForm extends PageInfoForm
     {
         return _Rows(
             _Input('knowledge.page-exterior-color')->type('color')->value($this->model->getExteriorBackgroundColor())->name('exterior_background_color'),
-            _Input('knowledge.subtitule')->name('subtitle'),
+            _Input('knowledge.subtitle')->name('subtitle'),
             _Select('knowledge.linked-route')->options(
                 collect(Route::getRoutes()->getRoutesByName())->mapWithKeys(fn($route, $name) => [$name => $name]),
             )->name('associated_route'),
