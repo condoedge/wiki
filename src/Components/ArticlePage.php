@@ -11,6 +11,7 @@ use Kompo\Form;
 class ArticlePage extends Form
 {
     public $containerClass = "min-h-screen bg-white pb-8";
+    public $style = "min-width: 700px;";
 
     public $model = KnowledgePage::class;
 
